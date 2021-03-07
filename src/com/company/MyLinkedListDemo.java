@@ -1,9 +1,9 @@
 package com.company;
 
+import com.company.customexceptions.EmptyListException;
 import com.company.lineardatastructures.MyLinkedList;
-import com.company.lineardatastructures.customexceptions.EmptyListException;
 
-public class Main {
+public class MyLinkedListDemo {
 
     public static void main(String[] args) {
         try {
@@ -19,9 +19,13 @@ public class Main {
             System.out.println("len : " + ll.size());
             System.out.println("mid ele : " + ll.center());
             ll.reverse();
-            System.out.println("del test");
+            System.out.println("for each test");
+
+            for (int integerNode : ll) {
+                System.out.println(integerNode);
+            }
+
             ll.deleteAtEnd();
-            ll.print();
         } catch (EmptyListException e) {
             System.err.println(e.getMessage());
         }

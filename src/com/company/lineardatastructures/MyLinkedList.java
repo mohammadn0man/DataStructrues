@@ -1,15 +1,18 @@
 package com.company.lineardatastructures;
 
-import com.company.lineardatastructures.customexceptions.EmptyListException;
-import com.company.lineardatastructures.customexceptions.InvalidPositionException;
+import com.company.customexceptions.EmptyListException;
+import com.company.customexceptions.InvalidPositionException;
 import com.company.lineardatastructures.utils.Node;
+import com.company.lineardatastructures.utils.NodeIterator;
 
-public class MyLinkedList<T> {
+import java.util.Iterator;
+
+public class MyLinkedList<T> implements Iterable<T> {
 
     public static final String EMPTY_LIST = "List is empty.";
     private Node<T> head;
 
-    public void insert(T val) {
+    public synchronized void insert(T val) {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
@@ -19,7 +22,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void insertAtPosition(T val, int pos) throws InvalidPositionException {
+    public synchronized void insertAtPosition(T val, int pos) throws InvalidPositionException {
         Node<T> newNode = new Node<>(val, null);
         Node<T> node = head;
         int len = this.size();
@@ -36,7 +39,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void insertAtEnd(T val) {
+    public synchronized void insertAtEnd(T val) {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
@@ -48,7 +51,7 @@ public class MyLinkedList<T> {
         node.next = newNode;
     }
 
-    public void delete() throws EmptyListException {
+    public synchronized void delete() throws EmptyListException {
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         } else {
@@ -56,7 +59,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void deleteAtPosition(int pos) {
+    public synchronized void deleteAtPosition(int pos) {
         int len = this.size();
         if (len < pos) {
             try {
@@ -74,7 +77,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void deleteAtEnd() throws EmptyListException {
+    public synchronized void deleteAtEnd() throws EmptyListException {
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         } else if (head.next == null) {
@@ -95,28 +98,28 @@ public class MyLinkedList<T> {
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         } else {
-           Node<T> slow;
-           Node<T> fast;
-           slow = fast = head;
-           while (fast.next != null && fast.next.next != null){
-               fast = fast.next.next;
-               slow = slow.next;
-           }
-           mid = slow.data;
+            Node<T> slow;
+            Node<T> fast;
+            slow = fast = head;
+            while (fast.next != null && fast.next.next != null) {
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            mid = slow.data;
         }
         return mid;
     }
 
-    public void reverse() throws EmptyListException {
-        if (head == null){
+    public synchronized void reverse() throws EmptyListException {
+        if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
-        } else if (head.next == null){
+        } else if (head.next == null) {
             return;
         }
         Node<T> nextNode;
         Node<T> node = head;
         Node<T> prevNode = null;
-        while (node != null){
+        while (node != null) {
             nextNode = node.next;
             node.next = prevNode;
             prevNode = node;
@@ -142,4 +145,11 @@ public class MyLinkedList<T> {
             node = node.next;
         }
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new NodeIterator<>(head);
+    }
+
+
 }
