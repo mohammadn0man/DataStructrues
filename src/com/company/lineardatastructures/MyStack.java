@@ -22,13 +22,13 @@ public class MyStack<T> implements Iterable<T> {
 
     public void push(T val) throws StackOverflowException {
         Node<T> newNode = new Node<>(val, null);
-        if (top == null) {
-            top = newNode;
-        } else if (isFull()) {
-            newNode.next = top;
+        if (!isFull()){
+            throw new StackOverflowException("Stack Overflow");
+        } else if (top == null) {
             top = newNode;
         } else {
-            throw new StackOverflowException("Stackoverflow ");
+            newNode.next = top;
+            top = newNode;
         }
     }
 
@@ -99,7 +99,7 @@ public class MyStack<T> implements Iterable<T> {
     }
 
     private boolean isFull() {
-        return size() != maxValue;
+        return size() < maxValue;
     }
 
 }
