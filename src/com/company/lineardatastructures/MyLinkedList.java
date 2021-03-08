@@ -7,6 +7,23 @@ import com.company.lineardatastructures.utils.NodeIterator;
 
 import java.util.Iterator;
 
+
+/*
+    using synchronized to make thread-safe list
+    Methods:
+    1 insert
+    2 insertAtPosition
+    3 insertAtEnd
+    4 delete
+    5 deleteAtPosition
+    6 deleteAtEnd
+    7 center
+    8 reverse
+    9 size
+    10 print
+    11 iterator
+*/
+
 public class MyLinkedList<T> implements Iterable<T> {
 
     public static final String EMPTY_LIST = "List is empty.";
@@ -59,14 +76,10 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
     }
 
-    public synchronized void deleteAtPosition(int pos) {
+    public synchronized void deleteAtPosition(int pos) throws InvalidPositionException {
         int len = this.size();
         if (len < pos) {
-            try {
-                throw new InvalidPositionException("Position greater than size.");
-            } catch (InvalidPositionException e) {
-                System.err.println(e.getMessage());
-            }
+            throw new InvalidPositionException("Position greater than size.");
         } else {
             Node<T> node = head;
             int i = 1;
@@ -146,10 +159,13 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new NodeIterator<>(head);
     }
-
 
 }
