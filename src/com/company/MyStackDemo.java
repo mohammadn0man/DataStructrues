@@ -1,7 +1,8 @@
-package com.company.lineardatastructures;
+package com.company;
 
 import com.company.customexceptions.EmptyListException;
 import com.company.customexceptions.StackOverflowException;
+import com.company.lineardatastructures.MyStack;
 
 public class MyStackDemo {
     public static void main(String[] args) {
@@ -26,8 +27,7 @@ public class MyStackDemo {
             System.out.println(stack.size());
             System.out.println(stack.pop());
             stack.reverse();
-            for (Integer i :
-                    stack) {
+            for (Integer i : stack) {
                 System.out.print(i + ", ");
             }
 
