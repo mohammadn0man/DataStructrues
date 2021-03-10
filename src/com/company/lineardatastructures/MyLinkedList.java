@@ -80,6 +80,8 @@ public class MyLinkedList<T> implements Iterable<T> {
         int len = this.size();
         if (len < pos) {
             throw new InvalidPositionException("Position greater than size.");
+        } else if (pos == 0) {
+            head = head.next;
         } else {
             Node<T> node = head;
             int i = 1;

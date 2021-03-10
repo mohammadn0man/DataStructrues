@@ -43,6 +43,9 @@ public class MyStack<T> implements Iterable<T> {
     }
 
     public T peek() {
+        if (top == null){
+            return null;
+        }
         return top.data;
     }
 

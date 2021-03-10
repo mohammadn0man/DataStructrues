@@ -15,6 +15,13 @@ public class MyQueue<T> implements Iterable<T> {
     private Node<T> front;
     private int maxValue = Integer.MAX_VALUE;
 
+    public MyQueue(int maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public MyQueue() {
+    }
+
     public void enqueue(T val) throws QueueIsFullException {
         Node<T> node = new Node<>(val, null);
         if (isFull()) {
