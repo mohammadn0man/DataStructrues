@@ -3,6 +3,7 @@ package com.company.lineardatastructures;
 import com.company.customexceptions.InvalidPositionException;
 import com.company.customexceptions.QueueIsEmptyException;
 import com.company.customexceptions.QueueIsFullException;
+import com.company.lineardatastructures.utils.Node;
 import com.company.lineardatastructures.utils.PriorityNode;
 import com.company.lineardatastructures.utils.PriorityNodeIterator;
 
@@ -96,6 +97,17 @@ public class MyPriorityQueue<T> implements Iterable<T> {
             node = node.next;
         }
         return val;
+    }
+
+    public boolean contains(T val){
+        Node<T> node = head;
+        while (node != null){
+            if (node.data.equals(val)){
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
     }
 
     public void print() {

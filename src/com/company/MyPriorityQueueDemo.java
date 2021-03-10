@@ -24,6 +24,7 @@ public class MyPriorityQueueDemo {
             }
             q.print();
             System.out.println( q.dequeue());
+            System.out.println("contains : " + q.contains(23));
             System.out.println( q.dequeue());
             System.out.println( q.dequeue());
             System.out.println( q.dequeue());
