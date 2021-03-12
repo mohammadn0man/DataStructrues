@@ -26,6 +26,7 @@ public class MyLinkedListDemo {
             }
 
             ll.deleteAtEnd();
+            System.out.println(ll.size());
         } catch (EmptyListException e) {
             System.err.println(e.getMessage());
         }

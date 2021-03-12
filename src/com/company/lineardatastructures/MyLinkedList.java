@@ -28,6 +28,7 @@ public class MyLinkedList<T> implements Iterable<T> {
 
     public static final String EMPTY_LIST = "List is empty.";
     private Node<T> head;
+    private int size = 0;
 
     public synchronized void insert(T val) {
         Node<T> newNode = new Node<>(val, null);
@@ -37,6 +38,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             newNode.next = head;
             head = newNode;
         }
+        size++;
     }
 
     public synchronized void insertAtPosition(T val, int pos) throws InvalidPositionException {
@@ -54,6 +56,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             node.next = newNode;
             newNode.next = temp;
         }
+        size++;
     }
 
     public synchronized void insertAtEnd(T val) {
@@ -66,6 +69,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             node = node.next;
         }
         node.next = newNode;
+        size++;
     }
 
     public synchronized void delete() throws EmptyListException {
@@ -74,6 +78,7 @@ public class MyLinkedList<T> implements Iterable<T> {
         } else {
             head = head.next;
         }
+        size--;
     }
 
     public synchronized void deleteAtPosition(int pos) throws InvalidPositionException {
@@ -90,6 +95,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             }
             node.next = node.next.next;
         }
+        size--;
     }
 
     public synchronized void deleteAtEnd() throws EmptyListException {
@@ -106,6 +112,7 @@ public class MyLinkedList<T> implements Iterable<T> {
             }
             temp.next = null;
         }
+        size--;
     }
 
     public T center() throws EmptyListException {
@@ -144,13 +151,7 @@ public class MyLinkedList<T> implements Iterable<T> {
     }
 
     public int size() {
-        int len = 0;
-        Node<T> node = head;
-        while (node != null) {
-            len++;
-            node = node.next;
-        }
-        return len;
+        return size;
     }
 
     public void print() {

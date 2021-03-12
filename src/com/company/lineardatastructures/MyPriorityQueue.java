@@ -14,6 +14,7 @@ public class MyPriorityQueue<T> implements Iterable<T> {
     private PriorityNode<T> head;
     private int maxValue = Integer.MAX_VALUE;
     private int defaultPriority = 5;
+    private int size = 0;
 
     public MyPriorityQueue(int maxValue, int defaultPriority) {
         this.maxValue = maxValue;
@@ -42,6 +43,7 @@ public class MyPriorityQueue<T> implements Iterable<T> {
             node.next = head;
             this.head = node;
         }
+        size++;
     }
 
     public T dequeue() throws QueueIsEmptyException, InvalidPositionException {
@@ -80,6 +82,7 @@ public class MyPriorityQueue<T> implements Iterable<T> {
             }
             node.next = node.next.next;
         }
+        size--;
     }
 
     public T peek() throws QueueIsEmptyException {
@@ -99,10 +102,10 @@ public class MyPriorityQueue<T> implements Iterable<T> {
         return val;
     }
 
-    public boolean contains(T val){
+    public boolean contains(T val) {
         Node<T> node = head;
-        while (node != null){
-            if (node.data.equals(val)){
+        while (node != null) {
+            if (node.data.equals(val)) {
                 return true;
             }
             node = node.next;
@@ -127,14 +130,8 @@ public class MyPriorityQueue<T> implements Iterable<T> {
         return size() <= 0;
     }
 
-    private int size() {
-        int len = 0;
-        PriorityNode<T> node = head;
-        while (node != null) {
-            len++;
-            node = node.next;
-        }
-        return len;
+    public int size() {
+        return size;
     }
 
     public void reverse() throws QueueIsEmptyException {

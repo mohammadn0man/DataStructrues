@@ -12,6 +12,7 @@ public class MyStack<T> implements Iterable<T> {
 
     private Node<T> top;
     private int maxValue = Integer.MAX_VALUE;
+    private int size = 0;
 
     public MyStack(int maxValue) {
         this.maxValue = maxValue;
@@ -22,7 +23,7 @@ public class MyStack<T> implements Iterable<T> {
 
     public void push(T val) throws StackOverflowException {
         Node<T> newNode = new Node<>(val, null);
-        if (isFull()){
+        if (isFull()) {
             throw new StackOverflowException("Stack Overflow");
         } else if (top == null) {
             top = newNode;
@@ -30,6 +31,7 @@ public class MyStack<T> implements Iterable<T> {
             newNode.next = top;
             top = newNode;
         }
+        size++;
     }
 
     public T pop() throws EmptyListException {
@@ -39,20 +41,21 @@ public class MyStack<T> implements Iterable<T> {
         }
         val = top.data;
         top = top.next;
+        size--;
         return val;
     }
 
     public T peek() {
-        if (top == null){
+        if (top == null) {
             return null;
         }
         return top.data;
     }
 
-    public boolean contains(T val){
+    public boolean contains(T val) {
         Node<T> node = top;
-        while (node != null){
-            if (node.data.equals(val)){
+        while (node != null) {
+            if (node.data.equals(val)) {
                 return true;
             }
             node = node.next;
@@ -61,13 +64,7 @@ public class MyStack<T> implements Iterable<T> {
     }
 
     public int size() {
-        int len = 0;
-        Node<T> node = top;
-        while (node != null) {
-            len++;
-            node = node.next;
-        }
-        return len;
+        return size;
     }
 
     public synchronized void reverse() throws StackUnderflowException {

@@ -6,7 +6,7 @@ import com.company.lineardatastructures.MyStack;
 
 public class MyStackDemo {
     public static void main(String[] args) {
-        MyStack<Integer> stack = new MyStack<>(5);
+        MyStack<Integer> stack = new MyStack<>();
 
         try {
             stack.push(1312);

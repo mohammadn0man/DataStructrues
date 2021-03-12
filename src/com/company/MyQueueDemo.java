@@ -33,6 +33,7 @@ public class MyQueueDemo {
             System.out.println();
             q.reverse();
             q.print();
+            System.out.println("size " + q.size());
         } catch (QueueIsEmptyException | QueueIsFullException | EmptyListException | StackOverflowException e) {
             System.err.println(e.getMessage());
         }

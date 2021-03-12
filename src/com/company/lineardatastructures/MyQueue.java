@@ -14,6 +14,7 @@ public class MyQueue<T> implements Iterable<T> {
     private Node<T> rear;
     private Node<T> front;
     private int maxValue = Integer.MAX_VALUE;
+    private int size = 0;
 
     public MyQueue(int maxValue) {
         this.maxValue = maxValue;
@@ -34,6 +35,7 @@ public class MyQueue<T> implements Iterable<T> {
             rear.next = node;
             rear = rear.next;
         }
+        size++;
     }
 
     public T dequeue() throws QueueIsEmptyException {
@@ -43,6 +45,7 @@ public class MyQueue<T> implements Iterable<T> {
         }
         val = front.data;
         front = front.next;
+        size--;
         return val;
     }
 
@@ -65,13 +68,7 @@ public class MyQueue<T> implements Iterable<T> {
     }
 
     public int size() {
-        int len = 0;
-        Node<T> node = front;
-        while (node != null) {
-            len++;
-            node = node.next;
-        }
-        return len;
+        return size;
     }
 
     public void reverse() throws StackOverflowException, EmptyListException, QueueIsFullException, QueueIsEmptyException {
@@ -95,6 +92,7 @@ public class MyQueue<T> implements Iterable<T> {
             System.out.print(node.data + ", ");
             node = node.next;
         }
+        System.out.println();
     }
 
     private boolean isFull() {

@@ -22,14 +22,16 @@ public class MyPriorityQueueDemo {
             for (int i : q) {
                 System.out.print(i + " ");
             }
+            System.out.println("size : " + q.size());
             q.print();
-            System.out.println( q.dequeue());
             System.out.println("contains : " + q.contains(23));
             System.out.println( q.dequeue());
             System.out.println( q.dequeue());
             System.out.println( q.dequeue());
             System.out.println( q.dequeue());
             System.out.println( q.dequeue());
+            System.out.println( q.dequeue());
+            System.out.println("size : " + q.size());
             System.out.println("peek : " + q.peek());
             q.reverse();
             q.print();
