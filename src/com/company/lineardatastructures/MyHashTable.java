@@ -54,7 +54,6 @@ public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
                 prev = head;
                 head = head.next;
             }
-            size--;
             return null;
         }
     }

@@ -19,9 +19,10 @@ public class MyHashTableDemo {
             System.out.println(hs);
         }
         System.out.println(hashTable.containsKey("tis"));
-        System.out.println(hashTable.remove("this"));
         System.out.println(hashTable.getValueByKey("thasdais"));
-        System.out.println(hashTable.remove("thsadf"));
+        System.out.println(hashTable.getSize());
+        System.out.println(hashTable.remove("this"));
+        System.out.println(hashTable.remove("thssdfadsdfdf"));
         System.out.println(hashTable.getSize());
     }
 }
