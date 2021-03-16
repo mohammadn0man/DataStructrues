@@ -1,5 +1,7 @@
 package com.company.lineardatastructures.utils;
 
+import com.company.lineardatastructures.nodes.Node;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

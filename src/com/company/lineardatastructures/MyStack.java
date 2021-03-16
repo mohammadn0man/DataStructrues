@@ -3,7 +3,7 @@ package com.company.lineardatastructures;
 import com.company.customexceptions.EmptyListException;
 import com.company.customexceptions.StackOverflowException;
 import com.company.customexceptions.StackUnderflowException;
-import com.company.lineardatastructures.utils.Node;
+import com.company.lineardatastructures.nodes.Node;
 import com.company.lineardatastructures.utils.NodeIterator;
 
 import java.util.Iterator;

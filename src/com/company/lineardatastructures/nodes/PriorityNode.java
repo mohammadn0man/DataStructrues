@@ -1,4 +1,4 @@
-package com.company.lineardatastructures.utils;
+package com.company.lineardatastructures.nodes;
 
 public class PriorityNode<T> extends Node<T>{
     public int priority;

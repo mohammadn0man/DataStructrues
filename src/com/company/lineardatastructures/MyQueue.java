@@ -4,7 +4,7 @@ import com.company.customexceptions.EmptyListException;
 import com.company.customexceptions.QueueIsEmptyException;
 import com.company.customexceptions.QueueIsFullException;
 import com.company.customexceptions.StackOverflowException;
-import com.company.lineardatastructures.utils.Node;
+import com.company.lineardatastructures.nodes.Node;
 import com.company.lineardatastructures.utils.NodeIterator;
 
 import java.util.Iterator;

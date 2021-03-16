@@ -1,5 +1,7 @@
 package com.company.lineardatastructures.utils;
 
+import com.company.lineardatastructures.nodes.HashNode;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;

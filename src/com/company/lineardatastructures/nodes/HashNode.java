@@ -1,4 +1,4 @@
-package com.company.lineardatastructures.utils;
+package com.company.lineardatastructures.nodes;
 
 public class HashNode<K, V> {
     public K key;

@@ -1,4 +1,4 @@
-package com.company.lineardatastructures.utils;
+package com.company.lineardatastructures.nodes;
 
 public class Node<T> {
     public T data;

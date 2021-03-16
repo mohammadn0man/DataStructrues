@@ -5,3 +5,5 @@
 - PriorityQueue
 - Stack 
 - HashTable
+- N-ary tree
+

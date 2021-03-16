@@ -1,14 +1,15 @@
 package com.company.lineardatastructures;
 
-import com.company.lineardatastructures.utils.HashNode;
+import com.company.lineardatastructures.nodes.HashNode;
 import com.company.lineardatastructures.utils.HashNodeIterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
 
-    ArrayList<HashNode<K, V>> bucket = new ArrayList<>();
+    List<HashNode<K, V>> bucket = new ArrayList<>();
     int numBuckets = 10;
     int size;
 
@@ -44,7 +45,7 @@ public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
             size--;
             return val;
         } else {
-            HashNode<K, V> prev = null;
+            HashNode<K, V> prev = head;
             while (head != null) {
                 if (head.key.equals(key)) {
                     prev.next = head.next;
@@ -84,7 +85,7 @@ public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
         }
         if ((1.0 * size) / numBuckets > 0.7) {
             //do something
-            ArrayList<HashNode<K, V>> tmp = bucket;
+            List<HashNode<K, V>> tmp = bucket;
             bucket = new ArrayList<>();
             numBuckets = 2 * numBuckets;
             for (int i = 0; i < numBuckets; i++) {

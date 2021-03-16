@@ -3,8 +3,8 @@ package com.company.lineardatastructures;
 import com.company.customexceptions.InvalidPositionException;
 import com.company.customexceptions.QueueIsEmptyException;
 import com.company.customexceptions.QueueIsFullException;
-import com.company.lineardatastructures.utils.Node;
-import com.company.lineardatastructures.utils.PriorityNode;
+import com.company.lineardatastructures.nodes.Node;
+import com.company.lineardatastructures.nodes.PriorityNode;
 import com.company.lineardatastructures.utils.PriorityNodeIterator;
 
 import java.util.Iterator;

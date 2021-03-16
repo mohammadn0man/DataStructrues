@@ -1,7 +1,7 @@
 package com.company;
 
 import com.company.lineardatastructures.MyHashTable;
-import com.company.lineardatastructures.utils.HashNode;
+import com.company.lineardatastructures.nodes.HashNode;
 
 public class MyHashTableDemo {
     public static void main(String[] args) {
