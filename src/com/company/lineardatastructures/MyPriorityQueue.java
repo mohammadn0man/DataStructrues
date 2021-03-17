@@ -1,9 +1,7 @@
 package com.company.lineardatastructures;
 
-import com.company.customexceptions.InvalidPositionException;
 import com.company.customexceptions.QueueIsEmptyException;
 import com.company.customexceptions.QueueIsFullException;
-import com.company.lineardatastructures.nodes.Node;
 import com.company.lineardatastructures.nodes.PriorityNode;
 import com.company.lineardatastructures.utils.PriorityNodeIterator;
 
@@ -34,76 +32,50 @@ public class MyPriorityQueue<T> implements Iterable<T> {
 
     public void enqueue(T val, int priority) throws QueueIsFullException {
         PriorityNode<T> node = new PriorityNode<>(val, priority, null);
+        this.enqueue(node);
+    }
+
+    public void enqueue(PriorityNode<T> newNode) throws QueueIsFullException {
         if (isFull()) {
             throw new QueueIsFullException("Priority Queue is Full.");
         }
-        if (head == null) {
-            head = node;
-        } else {
-            node.next = head;
-            this.head = node;
+        if (head == null)
+            head = newNode;
+        else {
+            PriorityNode<T> currentPtr = head;
+            if (head.getPriority() > newNode.getPriority()) {
+                newNode.setNext(head);
+                head = newNode;
+            } else {
+                while (currentPtr.getNext() != null && currentPtr.getNext().getPriority() < newNode.getPriority()) {
+                    currentPtr = currentPtr.getNext();
+                }
+                newNode.setNext(currentPtr.getNext());
+                currentPtr.setNext(newNode);
+            }
         }
         size++;
     }
 
-    public T dequeue() throws QueueIsEmptyException, InvalidPositionException {
+    public T dequeue() throws QueueIsEmptyException {
         if (head == null) {
-            throw new QueueIsEmptyException("Priority Queue is empty");
+            throw new QueueIsEmptyException("Priority List is Empty");
         }
-        PriorityNode<T> node = head;
-        T val = head.data;
-        int index = 0;
-        int i = 0;
-        int maxPriority = head.priority;
-        while (node != null) {
-            if (node.priority > maxPriority) {
-                maxPriority = node.priority;
-                val = node.data;
-                index = i;
-            }
-            node = node.next;
-            i++;
-        }
-        this.deleteAtPosition(index);
-        return val;
-    }
-
-    public void deleteAtPosition(int pos) throws InvalidPositionException {
-        int len = this.size();
-        if (len < pos) {
-            throw new InvalidPositionException("Position greater than size.");
-        } else if (pos == 0) {
-            head = head.next;
-        } else {
-            PriorityNode<T> node = head;
-            int i = 0;
-            while (++i < pos) {
-                node = node.next;
-            }
-            node.next = node.next.next;
-        }
+        PriorityNode<T> deletedNode = head;
+        head = head.getNext();
         size--;
+        return deletedNode.getData();
     }
 
     public T peek() throws QueueIsEmptyException {
         if (head == null) {
-            throw new QueueIsEmptyException("Priority Queue is empty");
+            throw new QueueIsEmptyException("Priority List is Empty");
         }
-        PriorityNode<T> node = head;
-        T val = head.data;
-        int maxPriority = head.priority;
-        while (node != null) {
-            if (node.priority > maxPriority) {
-                maxPriority = node.priority;
-                val = node.data;
-            }
-            node = node.next;
-        }
-        return val;
+        return head.getData();
     }
 
     public boolean contains(T val) {
-        Node<T> node = head;
+        PriorityNode<T> node = head;
         while (node != null) {
             if (node.data.equals(val)) {
                 return true;

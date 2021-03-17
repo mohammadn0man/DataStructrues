@@ -12,6 +12,7 @@ class MyLinkedListTest {
         list.insert(21);
         list.insert(321);
         assertNotNull(list);
+//        assertIterableEquals(list, list);
         assertEquals(2, list.size());
     }
 }

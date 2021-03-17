@@ -14,4 +14,20 @@ public class PriorityNode<T> extends Node<T>{
         super(data);
         this.next = next;
     }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public PriorityNode<T> getNext() {
+        return next;
+    }
+
+    public void setNext(PriorityNode<T> next) {
+        this.next = next;
+    }
+
+    public T getData() {
+        return data;
+    }
 }

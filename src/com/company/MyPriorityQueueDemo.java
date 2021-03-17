@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.customexceptions.InvalidPositionException;
 import com.company.customexceptions.QueueIsEmptyException;
 import com.company.customexceptions.QueueIsFullException;
 import com.company.lineardatastructures.MyPriorityQueue;
@@ -35,7 +34,7 @@ public class MyPriorityQueueDemo {
             System.out.println("peek : " + q.peek());
             q.reverse();
             q.print();
-        } catch (QueueIsFullException | QueueIsEmptyException | InvalidPositionException e) {
+        } catch (QueueIsFullException | QueueIsEmptyException e) {
             System.err.println(e.getMessage());
         }
     }
