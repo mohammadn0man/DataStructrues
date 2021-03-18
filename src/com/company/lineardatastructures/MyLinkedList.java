@@ -24,7 +24,7 @@ import java.util.Iterator;
     11 iterator
 */
 
-public class MyLinkedList<T> implements Iterable<T> {
+public class MyLinkedList<T> implements Iterable<T>, MyNewQueue<T> {
 
     public static final String EMPTY_LIST = "List is empty.";
     private Node<T> head;
@@ -76,13 +76,16 @@ public class MyLinkedList<T> implements Iterable<T> {
         size++;
     }
 
-    public synchronized void delete() throws EmptyListException {
+    public synchronized T delete() throws EmptyListException {
+        T data;
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         } else {
+            data = head.data;
             head = head.next;
         }
         size--;
+        return data;
     }
 
     public synchronized void deleteAtPosition(int pos) throws InvalidPositionException, EmptyListException {
@@ -169,6 +172,34 @@ public class MyLinkedList<T> implements Iterable<T> {
             node = nextNode;
         }
         head = prevNode;
+    }
+
+    @Override
+    public void enqueue(T val) {
+        insert(val);
+    }
+
+    @Override
+    public T dequeue() throws EmptyListException {
+        return delete();
+    }
+
+    @Override
+    public T peek() {
+        final Node<T> node = head;
+        return (node == null) ? null : node.data;
+    }
+
+    @Override
+    public boolean contains(T val) {
+        Node<T> node = head;
+        while (node != null){
+            if (node.data.equals(val)){
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
     }
 
     public int size() {

@@ -50,10 +50,7 @@ public class MyQueue<T> implements Iterable<T> {
     }
 
     public T peek(){
-        if (front == null){
-            return null;
-        }
-        return front.data;
+        return front == null ? null : front.data;
     }
 
     public boolean contains(T val){
