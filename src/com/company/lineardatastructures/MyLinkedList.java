@@ -24,7 +24,7 @@ import java.util.Iterator;
     11 iterator
 */
 
-public class MyLinkedList<T> implements Iterable<T>, MyNewQueue<T> {
+public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
 
     public static final String EMPTY_LIST = "List is empty.";
     private Node<T> head;
@@ -45,6 +45,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyNewQueue<T> {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
+            size++;
             return;
         }
         Node<T> node = head;
@@ -67,6 +68,8 @@ public class MyLinkedList<T> implements Iterable<T>, MyNewQueue<T> {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
+            size++;
+            return;
         }
         Node<T> node = head;
         while (node.next != null) {
@@ -176,7 +179,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyNewQueue<T> {
 
     @Override
     public void enqueue(T val) {
-        insert(val);
+        insertAtEnd(val);
     }
 
     @Override

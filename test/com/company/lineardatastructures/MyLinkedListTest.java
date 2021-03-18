@@ -18,7 +18,7 @@ class MyLinkedListTest {
     }
 
     @BeforeEach
-    void tearDown(){
+    void tearDown() {
         list = new MyLinkedList<>();
     }
 
@@ -46,7 +46,10 @@ class MyLinkedListTest {
         @DisplayName("At End")
         void insertAtEnd() throws EmptyListException, InvalidPositionException {
             list.insertAtEnd(2000);
-            assertEquals(2000, list.getNodeAt(list.size()).data);
+            assertEquals(2000, list.getNodeAt(list.size() - 1).data);
+            list.insertAtEnd(300);
+            assertEquals(300, list.getNodeAt(list.size() - 1).data);
+
         }
 
     }
@@ -55,7 +58,7 @@ class MyLinkedListTest {
     @DisplayName("Deletion Test")
     class DeletionTest {
         @BeforeEach
-        void init(){
+        void init() {
             list.insert(1);
             list.insert(2);
             list.insert(3);
@@ -119,7 +122,7 @@ class MyLinkedListTest {
     }
 
     @AfterAll
-    static void end(){
+    static void end() {
         System.out.println("Test completed");
     }
 
