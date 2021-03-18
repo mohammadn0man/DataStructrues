@@ -8,21 +8,26 @@ import com.company.lineardatastructures.utils.NodeIterator;
 import java.util.Iterator;
 
 
-/*
-    using synchronized to make thread-safe list
-    Methods:
-    1 insert
-    2 insertAtPosition
-    3 insertAtEnd
-    4 delete
-    5 deleteAtPosition
-    6 deleteAtEnd
-    7 center
-    8 reverse
-    9 size
-    10 print
-    11 iterator
-*/
+/**
+ * This LinkedList is the implementation of the {@code Iterable} and {@code MyQueueInterface}
+ * interfaces. Implements all the methods of {@code MyQueueInterface} and necessory methods
+ * of {@code Iterable} to make it {@code foreach} loop compatible.
+ * <p>It has implemented methods below:
+ * <p>{@code insert()}
+ * <p>{@code insertAtPosition()}
+ * <p>{@code insertAtEnd()}
+ * <p>{@code delete()}
+ * <p>{@code deleteAtPosition()}
+ * <p>{@code deleteAtEnd()}
+ * <p>{@code center()}
+ * <p>{@code reverse()}
+ * <p>{@code size()}
+ * <p>{@code print()}
+ * <p>{@code iterator()}
+ *
+ * @param <T> the type of elements held in this collection
+ * @author Mohammad Noman
+ */
 
 public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
 
@@ -30,6 +35,11 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
     private Node<T> head;
     private int size = 0;
 
+    /**
+     * Inserts the specified element at the beginning of this list.
+     *
+     * @param val the element to add
+     */
     public void insert(T val) {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
@@ -41,6 +51,13 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size++;
     }
 
+    /**
+     * Inserts the specified element at the given position of this list.
+     *
+     * @param val the element to add
+     * @param pos the position at which it will be added
+     * @throws InvalidPositionException
+     */
     public void insertAtPosition(T val, int pos) throws InvalidPositionException {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
@@ -64,6 +81,11 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size++;
     }
 
+    /**
+     * Inserts the specified element at the end of this list.
+     *
+     * @param val the element to add
+     */
     public void insertAtEnd(T val) {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
@@ -79,6 +101,12 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size++;
     }
 
+    /**
+     * Deletes the element from the start of this list.
+     *
+     * @return the deleted element
+     * @throws EmptyListException
+     */
     public T delete() throws EmptyListException {
         T data;
         if (head == null) {
@@ -91,6 +119,13 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         return data;
     }
 
+    /**
+     * Deletes the element from the given position of this list.
+     *
+     * @param pos the position of element you want to delete
+     * @throws InvalidPositionException
+     * @throws EmptyListException
+     */
     public void deleteAtPosition(int pos) throws InvalidPositionException, EmptyListException {
         if (head == null) {
             throw new EmptyListException("No element to delete");
@@ -111,6 +146,11 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size--;
     }
 
+    /**
+     * Deletes the element from the end of this list.
+     *
+     * @throws EmptyListException
+     */
     public void deleteAtEnd() throws EmptyListException {
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
@@ -128,6 +168,12 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size--;
     }
 
+    /**
+     * Find center of the list
+     *
+     * @return the element at the center of the list
+     * @throws EmptyListException
+     */
     public T center() throws EmptyListException {
         T mid;
         if (head == null) {
@@ -145,20 +191,34 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         return mid;
     }
 
+    /**
+     * Retrieve the {@code Node<T>} at the given position.
+     * Used mostly in testing class.
+     *
+     * @param index the position of element
+     * @return the element at given index
+     * @throws EmptyListException
+     * @throws InvalidPositionException
+     */
     public Node<T> getNodeAt(int index) throws EmptyListException, InvalidPositionException {
-        if (head == null){
+        if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         }
-        if (index > size){
+        if (index > size) {
             throw new InvalidPositionException("index value more than size of list.");
         }
         Node<T> node = head;
-        while (index-- > 0){
+        while (index-- > 0) {
             node = node.next;
         }
         return node;
     }
 
+    /**
+     * Reverse the existing list
+     *
+     * @throws EmptyListException
+     */
     @Override
     public void reverse() throws EmptyListException {
         if (head == null) {
@@ -178,27 +238,49 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         head = prevNode;
     }
 
+    /**
+     * Adds the specified element as the tail (last element) of this list.
+     *
+     * @param val the element to insert
+     */
     @Override
     public void enqueue(T val) {
         insertAtEnd(val);
     }
 
+    /**
+     * Retrieves and removes the head (first element) of this list.
+     *
+     * @return the head of this list, or {@code null} if this list is empty
+     * @throws EmptyListException
+     */
     @Override
     public T dequeue() throws EmptyListException {
         return delete();
     }
 
+    /**
+     * Retrieves, but does not remove, the head (first element) of this list.
+     *
+     * @return the head of this list, or {@code null} if this list is empty
+     */
     @Override
     public T peek() {
         final Node<T> node = head;
         return (node == null) ? null : node.data;
     }
 
+    /**
+     * Check if give element exist in the list
+     *
+     * @param val the element to check
+     * @return true if element is found, else false
+     */
     @Override
     public boolean contains(T val) {
         Node<T> node = head;
-        while (node != null){
-            if (node.data.equals(val)){
+        while (node != null) {
+            if (node.data.equals(val)) {
                 return true;
             }
             node = node.next;
@@ -206,10 +288,16 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         return false;
     }
 
+    /**
+     * @return size of the list
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Print the list from head to tail
+     */
     public void print() {
         Node<T> node = head;
         while (node != null) {
@@ -218,10 +306,18 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         }
     }
 
+    /**
+     * @return head of the list
+     */
     public Node<T> getHead() {
         return head;
     }
 
+    /**
+     * Make the list compatible to use with foreach loop
+     *
+     * @return list {@code Iterator}
+     */
     @Override
     public Iterator<T> iterator() {
         return new NodeIterator<>(head);
