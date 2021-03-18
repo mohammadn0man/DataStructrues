@@ -3,6 +3,7 @@ package com.company.lineardatastructures;
 import com.company.customexceptions.EmptyListException;
 import com.company.customexceptions.StackOverflowException;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,8 +12,8 @@ class MyStackTest {
 
     public static MyStack<Integer> stack;
 
-    @BeforeAll
-    static void init() throws StackOverflowException {
+    @BeforeEach
+    void init() throws StackOverflowException {
         stack = new MyStack<>();
         stack.push(1);
         stack.push(2);
@@ -62,11 +63,11 @@ class MyStackTest {
 
     @Test
     void isEmpty() throws EmptyListException {
-        assertTrue(stack.isEmpty());
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        stack.pop();
         assertFalse(stack.isEmpty());
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        assertTrue(stack.isEmpty());
     }
 }
