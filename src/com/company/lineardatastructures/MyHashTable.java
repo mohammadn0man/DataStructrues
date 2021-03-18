@@ -9,9 +9,9 @@ import java.util.List;
 
 public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
 
-    List<HashNode<K, V>> bucket = new ArrayList<>();
-    int numBuckets = 10;
-    int size;
+    private List<HashNode<K, V>> bucket = new ArrayList<>();
+    private int numBuckets = 10;
+    private int size;
 
     public MyHashTable() {
         for (int i = 0; i < numBuckets; i++) {
@@ -61,7 +61,6 @@ public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
 
     public void add(K key, V value) {
         int index = getBucketIndex(key);
-        System.out.println(index);
         HashNode<K, V> head = bucket.get(index);
         HashNode<K, V> toAdd = new HashNode<>(key, value);
         if (head == null) {
@@ -86,6 +85,7 @@ public class MyHashTable<K, V> implements Iterable<HashNode<K, V>> {
         if ((1.0 * size) / numBuckets > 0.7) {
             //do something
             List<HashNode<K, V>> tmp = bucket;
+            size = 1;
             bucket = new ArrayList<>();
             numBuckets = 2 * numBuckets;
             for (int i = 0; i < numBuckets; i++) {
