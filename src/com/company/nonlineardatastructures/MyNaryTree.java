@@ -1,9 +1,9 @@
-package com.company.lineardatastructures;
+package com.company.nonlineardatastructures;
 
 import com.company.customexceptions.EmptyTreeException;
 import com.company.customexceptions.InvalidIndexException;
-import com.company.lineardatastructures.nodes.TreeNode;
-import com.company.lineardatastructures.utils.NaryTreeIterator;
+import com.company.nonlineardatastructures.nodes.TreeNode;
+import com.company.nonlineardatastructures.utils.NaryTreeIterator;
 
 import java.util.Iterator;
 import java.util.LinkedList;

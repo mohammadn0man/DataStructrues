@@ -1,6 +1,6 @@
-package com.company.lineardatastructures.utils;
+package com.company.nonlineardatastructures.utils;
 
-import com.company.lineardatastructures.nodes.TreeNode;
+import com.company.nonlineardatastructures.nodes.TreeNode;
 
 import java.util.*;
 

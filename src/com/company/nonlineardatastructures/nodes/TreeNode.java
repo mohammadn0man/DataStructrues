@@ -1,4 +1,4 @@
-package com.company.lineardatastructures.nodes;
+package com.company.nonlineardatastructures.nodes;
 
 import com.company.customexceptions.InvalidIndexException;
 

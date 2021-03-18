@@ -2,8 +2,8 @@ package com.company;
 
 import com.company.customexceptions.EmptyTreeException;
 import com.company.customexceptions.InvalidIndexException;
-import com.company.lineardatastructures.MyNaryTree;
-import com.company.lineardatastructures.nodes.TreeNode;
+import com.company.nonlineardatastructures.MyNaryTree;
+import com.company.nonlineardatastructures.nodes.TreeNode;
 
 public class MyNaryTreeDemo {
     public static void main(String[] args) {
