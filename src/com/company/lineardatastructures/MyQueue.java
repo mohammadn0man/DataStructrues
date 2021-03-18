@@ -73,7 +73,7 @@ public class MyQueue<T> implements Iterable<T> {
         while (this.isEmpty()){
             stack.push(this.dequeue());
         }
-        while (stack.isEmpty()){
+        while (!stack.isEmpty()){
             this.enqueue(stack.pop());
         }
     }

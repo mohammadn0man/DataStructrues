@@ -145,7 +145,7 @@ public class MyNaryTree<T> implements Iterable<T> {
         System.out.println();
     }
 
-    public List<TreeNode<T>> getElementFromValue(TreeNode<T> root, T value) throws EmptyTreeException {
+    public List<TreeNode<T>> getElementFromValue(T value) throws EmptyTreeException {
         if (root == null){
             throw new EmptyTreeException("Given root is empty.");
         }
