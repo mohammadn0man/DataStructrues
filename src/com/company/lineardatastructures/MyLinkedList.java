@@ -43,6 +43,10 @@ public class MyLinkedList<T> implements Iterable<T> {
 
     public synchronized void insertAtPosition(T val, int pos) throws InvalidPositionException {
         Node<T> newNode = new Node<>(val, null);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
         Node<T> node = head;
         int len = this.size();
         if (len < pos) {
@@ -81,7 +85,10 @@ public class MyLinkedList<T> implements Iterable<T> {
         size--;
     }
 
-    public synchronized void deleteAtPosition(int pos) throws InvalidPositionException {
+    public synchronized void deleteAtPosition(int pos) throws InvalidPositionException, EmptyListException {
+        if (head == null) {
+            throw new EmptyListException("No element to delete");
+        }
         int len = this.size();
         if (len < pos) {
             throw new InvalidPositionException("Position greater than size.");
@@ -130,6 +137,20 @@ public class MyLinkedList<T> implements Iterable<T> {
             mid = slow.data;
         }
         return mid;
+    }
+
+    public Node<T> getNodeAt(int index) throws EmptyListException, InvalidPositionException {
+        if (head == null){
+            throw new EmptyListException(EMPTY_LIST);
+        }
+        if (index > size){
+            throw new InvalidPositionException("index value more than size of list.");
+        }
+        Node<T> node = head;
+        while (index-- > 0){
+            node = node.next;
+        }
+        return node;
     }
 
     public synchronized void reverse() throws EmptyListException {
