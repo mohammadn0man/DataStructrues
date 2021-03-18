@@ -43,16 +43,11 @@ public class MyPriorityQueue<T> implements Iterable<T> {
             head = newNode;
         else {
             PriorityNode<T> currentPtr = head;
-            if (head.getPriority() > newNode.getPriority()) {
-                newNode.setNext(head);
-                head = newNode;
-            } else {
-                while (currentPtr.getNext() != null && currentPtr.getNext().getPriority() < newNode.getPriority()) {
-                    currentPtr = currentPtr.getNext();
-                }
-                newNode.setNext(currentPtr.getNext());
-                currentPtr.setNext(newNode);
+            while (currentPtr.getNext() != null && currentPtr.getNext().getPriority() <= newNode.getPriority()) {
+                currentPtr = currentPtr.getNext();
             }
+            newNode.setNext(currentPtr.getNext());
+            currentPtr.setNext(newNode);
         }
         size++;
     }
