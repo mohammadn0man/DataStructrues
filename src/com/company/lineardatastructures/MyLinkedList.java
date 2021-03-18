@@ -30,7 +30,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
     private Node<T> head;
     private int size = 0;
 
-    public synchronized void insert(T val) {
+    public void insert(T val) {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
@@ -41,7 +41,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size++;
     }
 
-    public synchronized void insertAtPosition(T val, int pos) throws InvalidPositionException {
+    public void insertAtPosition(T val, int pos) throws InvalidPositionException {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
@@ -64,7 +64,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size++;
     }
 
-    public synchronized void insertAtEnd(T val) {
+    public void insertAtEnd(T val) {
         Node<T> newNode = new Node<>(val, null);
         if (head == null) {
             head = newNode;
@@ -79,7 +79,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size++;
     }
 
-    public synchronized T delete() throws EmptyListException {
+    public T delete() throws EmptyListException {
         T data;
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
@@ -91,7 +91,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         return data;
     }
 
-    public synchronized void deleteAtPosition(int pos) throws InvalidPositionException, EmptyListException {
+    public void deleteAtPosition(int pos) throws InvalidPositionException, EmptyListException {
         if (head == null) {
             throw new EmptyListException("No element to delete");
         }
@@ -111,7 +111,7 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         size--;
     }
 
-    public synchronized void deleteAtEnd() throws EmptyListException {
+    public void deleteAtEnd() throws EmptyListException {
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         } else if (head.next == null) {
@@ -159,7 +159,8 @@ public class MyLinkedList<T> implements Iterable<T>, MyQueueInterface<T> {
         return node;
     }
 
-    public synchronized void reverse() throws EmptyListException {
+    @Override
+    public void reverse() throws EmptyListException {
         if (head == null) {
             throw new EmptyListException(EMPTY_LIST);
         } else if (head.next == null) {

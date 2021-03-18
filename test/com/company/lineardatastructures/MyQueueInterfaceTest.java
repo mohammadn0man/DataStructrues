@@ -32,11 +32,13 @@ class MyQueueInterfaceTest {
     }
 
     @Test
+    @DisplayName("Dequeue element")
     void dequeue() throws QueueIsEmptyException, EmptyListException {
         assertEquals(1, queue.dequeue());
     }
 
     @Test
+    @DisplayName("Peek element")
     void peek() throws QueueIsEmptyException, EmptyListException {
         assertEquals(1, queue.peek());
         queue.dequeue();
@@ -45,12 +47,14 @@ class MyQueueInterfaceTest {
     }
 
     @Test
+    @DisplayName("Contains element")
     void contains() {
         assertTrue(queue.contains(1));
         assertFalse(queue.contains(5));
     }
 
     @Test
+    @DisplayName("Size of queue")
     void size() throws QueueIsEmptyException, EmptyListException {
         assertEquals(4, queue.size());
         queue.dequeue();
@@ -58,6 +62,7 @@ class MyQueueInterfaceTest {
     }
 
     @Test
+    @DisplayName("Reverse of list")
     void reverse() throws QueueIsEmptyException, EmptyListException, StackOverflowException, QueueIsFullException {
         queue.reverse();
         assertEquals(4, queue.peek());
