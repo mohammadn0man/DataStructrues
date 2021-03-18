@@ -5,7 +5,7 @@ import com.company.customexceptions.QueueIsEmptyException;
 import com.company.customexceptions.QueueIsFullException;
 import com.company.customexceptions.StackOverflowException;
 
-public interface MyNewQueue<T> {
+public interface MyQueueInterface<T> {
 
     void enqueue(T val) throws QueueIsFullException;
 
